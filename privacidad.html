@@ -8,6 +8,13 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nutriruta.com/privacidad.html">
 <meta name="theme-color" content="#2BB5A0">
+<script>
+  try {
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('nutriruta-theme') || 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+</script>
 <link rel="stylesheet" href="./css/styles.css">
 <link rel="stylesheet" href="./css/legal.css">
 </head>
@@ -19,7 +26,13 @@
       <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C.5 7.5 3 3 7 3c2 0 4 1.2 5 3 1-1.8 3-3 5-3 4 0 6.5 4.5 4.5 9-2.5 4.65-9.5 9-9.5 9z"/></svg></span>
       NutriRuta
     </a>
-    <a class="legal-back" href="./index.html">← Volver al inicio</a>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a class="legal-back" href="./index.html">← Volver al inicio</a>
+    </div>
   </div>
 </header>
 
@@ -59,5 +72,6 @@
   </div>
 </main>
 
+<script src="./js/script.js"></script>
 </body>
 </html>

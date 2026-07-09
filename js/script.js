@@ -2,6 +2,22 @@
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// --- Selector de tema claro/oscuro ---
+// El <head> ya aplicó data-theme antes del primer pintado (evita parpadeo);
+// aquí solo conectamos el botón y guardamos la preferencia del visitante.
+const THEME_KEY = 'nutriruta-theme';
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  const labelFor = (theme) => (theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+  themeToggle.setAttribute('aria-label', labelFor(document.documentElement.getAttribute('data-theme')));
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    themeToggle.setAttribute('aria-label', labelFor(next));
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* modo privado: sin persistencia */ }
+  });
+}
+
 // --- Revelado suave al hacer scroll ---
 const revealTargets = document.querySelectorAll('.reveal');
 if (reduceMotion || !('IntersectionObserver' in window)) {
