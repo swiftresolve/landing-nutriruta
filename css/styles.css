@@ -68,9 +68,9 @@
   --line: #22362F; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 20px 40px -20px rgba(0,0,0,.6);
 }
 :root[data-theme="light"] {
-  --paper: #F7FAF9; --paper-raised: #FFFFFF; --ink: #16241F; --ink-soft: #5C7570;
+  --paper: #F7FAF9; --paper-raised: #FFFFFF; --ink: #233833; --ink-soft: #5C7570;
   --route: #2BB5A0; --route-deep: #1E8A7A; --route-tint: #DCF3EF;
-  --ember: #FF6F52; --ember-tint: #FFE7E1; --sky: #6FA8DC; --sky-tint: #E8F1FA;
+  --ember: #FF8A6B; --ember-tint: #FFE9E2; --sky: #6FA8DC; --sky-tint: #E8F1FA;
   --line: #DCE8E4; --shadow: 0 1px 2px rgba(20,36,30,.04), 0 12px 32px -16px rgba(20,36,30,.18);
 }
 
