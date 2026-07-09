@@ -12,13 +12,13 @@
      pero con neutros con sesgo de matiz, no gris puro. --- */
   --paper: #F7FAF9;
   --paper-raised: #FFFFFF;
-  --ink: #16241F;
+  --ink: #233833;        /* idéntico a --ink de la app */
   --ink-soft: #5C7570;
   --route: #2BB5A0;      /* verde agua — el color con más peso */
   --route-deep: #1E8A7A;
   --route-tint: #DCF3EF;
-  --ember: #FF6F52;      /* coral — reservado casi solo para CTAs */
-  --ember-tint: #FFE7E1;
+  --ember: #FF8A6B;      /* coral — idéntico a --accent de la app */
+  --ember-tint: #FFE9E2;
   --sky: #6FA8DC;
   --sky-tint: #E8F1FA;
   --line: #DCE8E4;
