@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¡Bienvenida! Instala tu app — NutriRuta</title>
+<meta name="description" content="Un último paso: instala NutriRuta en tu celular. Guía rápida para Android e iPhone.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://nutriruta.com/welcome">
+<meta name="theme-color" content="#2BB5A0">
+<script>
+  try {
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('nutriruta-theme') || 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+</script>
+<link rel="stylesheet" href="./css/styles.css">
+<link rel="stylesheet" href="./css/legal.css">
+<style>
+  .welcome-hero { padding: 56px 0 8px; text-align: center; }
+  .welcome-hero .wrap { max-width: 640px; }
+  .welcome-hero .badge { font-size: 3rem; margin-bottom: 12px; }
+  .welcome-hero h1 { font-family: var(--font-display); font-size: clamp(1.9rem, 5vw, 2.6rem); margin-bottom: 12px; text-wrap: balance; }
+  .welcome-hero p { color: var(--ink-soft); font-size: 1.05rem; max-width: 52ch; margin: 0 auto; }
+
+  .platform-tabs { display: flex; gap: 10px; justify-content: center; margin: 32px 0 8px; }
+  .platform-tab {
+    font-family: var(--font-signage); font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 12px 22px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--paper-raised);
+    color: var(--ink-soft); cursor: pointer; font-weight: 700;
+  }
+  .platform-tab.active { background: var(--route); border-color: var(--route); color: #fff; }
+
+  .steps-panel { display: none; padding: 36px 0 8px; }
+  .steps-panel.active { display: block; }
+  .step-list { display: flex; flex-direction: column; gap: 16px; max-width: 560px; margin: 0 auto; }
+  .step-card {
+    display: flex; gap: 16px; align-items: flex-start; background: var(--paper-raised);
+    border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 20px; box-shadow: var(--shadow);
+  }
+  .step-num {
+    flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--route-tint); color: var(--route-deep);
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem;
+  }
+  .step-card p { margin: 0; color: var(--ink); font-size: 0.98rem; line-height: 1.5; }
+  .step-card .icon { font-size: 1.1rem; margin-right: 4px; }
+
+  .welcome-note {
+    max-width: 560px; margin: 28px auto 0; padding: 16px 20px; border-radius: var(--radius-md);
+    background: var(--sky-tint); color: var(--ink); font-size: 0.9rem; text-align: left;
+  }
+
+  .welcome-cta { text-align: center; padding: 40px 0 64px; }
+  .welcome-cta .btn { font-size: 1.05rem; padding: 16px 36px; }
+  .welcome-cta p.small { color: var(--ink-soft); margin-top: 14px; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<header class="legal-header">
+  <div class="wrap">
+    <a href="./index.html" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C.5 7.5 3 3 7 3c2 0 4 1.2 5 3 1-1.8 3-3 5-3 4 0 6.5 4.5 4.5 9-2.5 4.65-9.5 9-9.5 9z"/></svg></span>
+      NutriRuta
+    </a>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="welcome-hero">
+    <div class="wrap">
+      <div class="badge">🎉</div>
+      <h1>¡Bienvenida a NutriRuta!</h1>
+      <p>Tu compra quedó confirmada — revisa tu correo, ahí tienes el recibo de Hotmart. Antes de empezar, un último paso: instala la app en tu celular. Toma menos de un minuto.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="platform-tabs">
+      <button class="platform-tab active" data-platform="android">🤖 Android</button>
+      <button class="platform-tab" data-platform="ios">🍎 iPhone</button>
+    </div>
+  </div>
+
+  <section class="steps-panel active" id="panel-android">
+    <div class="wrap">
+      <div class="step-list">
+        <div class="step-card"><span class="step-num">1</span><p>Abre <strong>nutriruta.app</strong> con <strong>Chrome</strong> (el navegador que ya usaste para comprar suele abrirlo automático).</p></div>
+        <div class="step-card"><span class="step-num">2</span><p>Toca los <strong>tres puntos ⋮</strong> arriba a la derecha de la pantalla.</p></div>
+        <div class="step-card"><span class="step-num">3</span><p>Toca <strong>"Instalar app"</strong> (o "Agregar a pantalla de inicio", según tu versión de Chrome).</p></div>
+        <div class="step-card"><span class="step-num">4</span><p>Confirma tocando <strong>"Instalar"</strong>.</p></div>
+        <div class="step-card"><span class="step-num">5</span><p><span class="icon">✅</span>Listo — el ícono de NutriRuta ya está en tu pantalla de inicio, se abre como cualquier otra app.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps-panel" id="panel-ios">
+    <div class="wrap">
+      <div class="step-list">
+        <div class="step-card"><span class="step-num">1</span><p>Abre <strong>nutriruta.app</strong> con <strong>Safari</strong> — tiene que ser Safari, no funciona desde Chrome ni otros navegadores en iPhone.</p></div>
+        <div class="step-card"><span class="step-num">2</span><p>Toca el ícono de <strong>Compartir</strong> (el cuadrado con la flecha hacia arriba, abajo al centro de la pantalla).</p></div>
+        <div class="step-card"><span class="step-num">3</span><p>Desliza hacia abajo en el menú y toca <strong>"Agregar a Inicio"</strong>.</p></div>
+        <div class="step-card"><span class="step-num">4</span><p>Toca <strong>"Agregar"</strong> arriba a la derecha.</p></div>
+        <div class="step-card"><span class="step-num">5</span><p><span class="icon">✅</span>Listo — el ícono de NutriRuta ya está en tu pantalla de inicio, se abre como cualquier otra app.</p></div>
+      </div>
+      <div class="welcome-note">📌 En iPhone, este paso es la única forma de tener el ícono y las notificaciones — no está en la App Store porque es una app web instalable, no una app tradicional.</div>
+    </div>
+  </section>
+
+  <section class="welcome-cta">
+    <div class="wrap">
+      <a class="btn btn-ember" href="https://nutriruta.app">Abrir NutriRuta →</a>
+      <p class="small">¿Algún problema instalando? Escríbenos a <a href="mailto:hola@nutriruta.com" style="color:var(--route-deep)">hola@nutriruta.com</a></p>
+    </div>
+  </section>
+</main>
+
+<script src="./js/script.js"></script>
+<script>
+  document.querySelectorAll('.platform-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.platform-tab').forEach((t) => t.classList.remove('active'));
+      document.querySelectorAll('.steps-panel').forEach((p) => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.platform).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
