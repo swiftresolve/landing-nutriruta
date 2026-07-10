@@ -76,3 +76,19 @@ if (stickyCta && hero && 'IntersectionObserver' in window) {
   }, { threshold: 0 });
   stickyIO.observe(hero);
 }
+
+// --- Meta Pixel: eventos clave del embudo (además del PageView del <head>) ---
+// "Lead" = quiso empezar la app gratis; "InitiateCheckout" = fue al checkout de Hotmart.
+// El evento de Compra real lo manda Hotmart directo por su integración con Conversions API.
+if (typeof fbq === 'function') {
+  document.querySelectorAll('a[href*="nutriruta.app"]').forEach((a) => {
+    a.addEventListener('click', () => fbq('track', 'Lead'));
+  });
+  document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach((a) => {
+    const esAnual = a.href.includes('ti1e49b3');
+    a.addEventListener('click', () => fbq('track', 'InitiateCheckout', {
+      value: esAnual ? 90 : 9,
+      currency: 'USD'
+    }));
+  });
+}
