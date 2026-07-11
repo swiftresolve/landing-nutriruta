@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tu pago se está procesando — NutriRuta</title>
+<meta name="description" content="Tu compra está siendo verificada. Te avisaremos por correo apenas se confirme.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://nutriruta.com/pendiente">
+<meta name="theme-color" content="#2BB5A0">
+<script>
+  try {
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('nutriruta-theme') || 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+</script>
+<link rel="stylesheet" href="./css/styles.css">
+<link rel="stylesheet" href="./css/legal.css">
+<style>
+  .pending-hero { padding: 64px 0; text-align: center; }
+  .pending-hero .wrap { max-width: 560px; }
+  .pending-hero .badge { font-size: 3rem; margin-bottom: 12px; }
+  .pending-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.4rem); margin-bottom: 14px; text-wrap: balance; }
+  .pending-hero p { color: var(--ink-soft); font-size: 1.05rem; max-width: 48ch; margin: 0 auto 10px; }
+  .pending-note {
+    max-width: 480px; margin: 28px auto 0; padding: 18px 20px; border-radius: var(--radius-md);
+    background: var(--sky-tint); color: var(--ink); font-size: 0.9rem; text-align: left;
+  }
+  .pending-cta { margin-top: 32px; }
+</style>
+</head>
+<body>
+
+<header class="legal-header">
+  <div class="wrap">
+    <a href="./index.html" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C.5 7.5 3 3 7 3c2 0 4 1.2 5 3 1-1.8 3-3 5-3 4 0 6.5 4.5 4.5 9-2.5 4.65-9.5 9-9.5 9z"/></svg></span>
+      NutriRuta
+    </a>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pending-hero">
+    <div class="wrap">
+      <div class="badge">⏳</div>
+      <h1>Tu pago se está procesando</h1>
+      <p>Recibimos tu compra y está en verificación — esto es normal con algunos métodos de pago (como transferencia, efectivo o PayPal) y puede tomar desde unos minutos hasta un par de días hábiles.</p>
+      <p>En cuanto se confirme, te enviaremos un correo para crear tu contraseña y activar tu cuenta. No necesitas hacer nada más por ahora.</p>
+      <div class="pending-note">
+        📬 Revisa la bandeja de entrada (y spam/promociones) del correo que usaste en la compra — ahí llegará el aviso de confirmación.
+      </div>
+      <div class="pending-cta">
+        <a class="btn btn-ghost" href="./index.html">Volver al inicio</a>
+      </div>
+      <p class="small" style="margin-top:24px;color:var(--ink-soft)">¿Tu pago lleva más de 3 días en este estado? Escríbenos a <a href="mailto:hello@nutriruta.com" style="color:var(--route-deep)">hello@nutriruta.com</a> con tu correo de compra.</p>
+    </div>
+  </section>
+</main>
+
+<script src="./js/script.js"></script>
+</body>
+</html>
