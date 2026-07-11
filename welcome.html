@@ -55,6 +55,21 @@
   .welcome-cta .btn { font-size: 1.05rem; padding: 16px 36px; }
   .welcome-cta p.small { color: var(--ink-soft); margin-top: 14px; font-size: 0.85rem; }
 
+  .step-order { padding: 8px 0 36px; }
+  .email-step {
+    max-width: 560px; margin: 0 auto; background: var(--paper-raised); border: 1.5px solid var(--route);
+    border-radius: var(--radius-md); padding: 22px 22px 20px; box-shadow: var(--shadow); text-align: center;
+  }
+  .email-step .icon { font-size: 2.2rem; margin-bottom: 6px; }
+  .email-step h2 { margin: 0 0 8px; }
+  .email-step p { margin: 0; color: var(--ink-soft); }
+  .email-step .fine { font-size: 0.82rem; margin-top: 12px; }
+  .section-kicker {
+    text-align: center; font-family: var(--font-signage); font-size: 0.8rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--route-deep); font-weight: 700; margin: 0 0 4px;
+  }
+  .section-title { text-align: center; margin: 0 0 20px; }
+
   /* ============ Mockup animado del celular ============ */
   .phone-wrap { display: flex; flex-direction: column; align-items: center; margin: 8px 0 4px; }
   .phone-mock {
@@ -185,11 +200,23 @@
     <div class="wrap">
       <div class="badge">🎉</div>
       <h1>¡Gracias por unirte a NutriRuta!</h1>
-      <p>Tu compra quedó confirmada — revisa tu correo, ahí tienes el recibo de Hotmart. Antes de empezar, un último paso: instala la app en tu celular. Toma menos de un minuto.</p>
+      <p>Tu compra quedó confirmada. Dos pasos rápidos y estás dentro — toman menos de dos minutos en total.</p>
     </div>
   </section>
 
+  <div class="wrap step-order">
+    <p class="section-kicker">Paso 1 de 2</p>
+    <div class="email-step">
+      <div class="icon">📬</div>
+      <h2>Revisa tu correo</h2>
+      <p>Te enviamos un mensaje para crear tu contraseña — con eso queda activa tu cuenta y tu plan Premium. Búscalo con el asunto <strong>"¡Tu compra está confirmada!"</strong> y haz clic en el botón de adentro.</p>
+      <p class="fine" style="color:var(--ink-soft)">📌 Si no lo ves en unos minutos, revisa spam/promociones. Si de plano no llega, escríbenos a <a href="mailto:hello@nutriruta.com" style="color:var(--route-deep)">hello@nutriruta.com</a> con el correo que usaste en la compra.</p>
+    </div>
+  </div>
+
   <div class="wrap">
+    <p class="section-kicker">Paso 2 de 2</p>
+    <h2 class="section-title">Instala la app en tu celular</h2>
     <div class="platform-tabs">
       <button class="platform-tab active" data-platform="android">🤖 Android</button>
       <button class="platform-tab" data-platform="ios">🍎 iPhone</button>
@@ -263,7 +290,7 @@
   <section class="welcome-cta">
     <div class="wrap">
       <a class="btn btn-ember" href="https://nutriruta.app">Abrir NutriRuta →</a>
-      <p class="small">¿Algún problema instalando? Escríbenos a <a href="mailto:hello@nutriruta.com" style="color:var(--route-deep)">hello@nutriruta.com</a></p>
+      <p class="small">Este botón te lleva a iniciar sesión — para eso necesitas haber creado tu contraseña primero (Paso 1). ¿Algún problema? Escríbenos a <a href="mailto:hello@nutriruta.com" style="color:var(--route-deep)">hello@nutriruta.com</a></p>
     </div>
   </section>
 </main>
