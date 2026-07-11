@@ -92,3 +92,47 @@ if (typeof fbq === 'function') {
     }));
   });
 }
+
+// --- Reseñas reales, en vivo desde la app (calificación 1-5 + mini reseña) ---
+// Se leen con la llave anon de Supabase directo desde una vista pública
+// (resenas_publicas) que nunca expone correo ni datos de la cuenta — solo lo
+// que la propia usuaria eligió hacer público al calificar dentro de la app.
+(function () {
+  const box = document.getElementById('resenasBox');
+  if (!box) return;
+
+  const SUPABASE_URL = 'https://rlcnxhykwfeasehmuhqe.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_jPGbbXPuwSggBMgiwY3EWw_5ey8BJgC';
+
+  function hojas(n) {
+    let out = '';
+    for (let i = 1; i <= 5; i++) out += `<span class="${i <= n ? '' : 'dim'}">🌿</span>`;
+    return out;
+  }
+
+  fetch(`${SUPABASE_URL}/rest/v1/resenas_publicas?select=*&order=calificacion.desc,created_at.desc&limit=12`, {
+    headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }
+  })
+    .then((r) => (r.ok ? r.json() : []))
+    .then((resenas) => {
+      if (!Array.isArray(resenas) || !resenas.length) return; // se queda el placeholder actual
+
+      const promedio = resenas.reduce((s, r) => s + r.calificacion, 0) / resenas.length;
+      const conTexto = resenas.filter((r) => r.texto && r.texto.trim());
+
+      box.classList.add('has-resenas');
+      box.innerHTML = `
+        <div class="resenas-badge">
+          <span class="leaves">${hojas(Math.round(promedio))}</span>
+          <span class="num">${promedio.toFixed(1)}/5</span>
+          <span class="count">· ${resenas.length} reseña${resenas.length === 1 ? '' : 's'}</span>
+        </div>
+        ${conTexto.slice(0, 6).map((r) => `
+          <div class="resena-item">
+            <div class="leaves">${hojas(r.calificacion)}</div>
+            <p>"${String(r.texto).replace(/[<>]/g, '')}"</p>
+            <div class="who">${String(r.nombre_mostrado || 'Usuaria de NutriRuta').replace(/[<>]/g, '')}</div>
+          </div>`).join('')}`;
+    })
+    .catch(() => { /* sin conexión: se queda el placeholder actual, no rompe la página */ });
+})();
