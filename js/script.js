@@ -104,9 +104,19 @@ if (typeof fbq === 'function') {
   const SUPABASE_URL = 'https://rlcnxhykwfeasehmuhqe.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_jPGbbXPuwSggBMgiwY3EWw_5ey8BJgC';
 
+  // Escapado real: las reseñas las escribe cualquier usuaria y las ve
+  // cualquier visitante, así que nunca se interpolan en crudo. Quitar solo
+  // < y > no basta (deja pasar comillas que rompen atributos).
+  function esc(v) {
+    return String(v ?? '').replace(/[&<>"']/g, (c) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+  }
+
   function hojas(n) {
+    const llenas = Math.max(0, Math.min(5, Math.round(Number(n) || 0)));
     let out = '';
-    for (let i = 1; i <= 5; i++) out += `<span class="${i <= n ? '' : 'dim'}">🌿</span>`;
+    for (let i = 1; i <= 5; i++) out += `<span class="${i <= llenas ? '' : 'dim'}">🌿</span>`;
     return out;
   }
 
@@ -130,8 +140,8 @@ if (typeof fbq === 'function') {
         ${conTexto.slice(0, 6).map((r) => `
           <div class="resena-item">
             <div class="leaves">${hojas(r.calificacion)}</div>
-            <p>"${String(r.texto).replace(/[<>]/g, '')}"</p>
-            <div class="who">${String(r.nombre_mostrado || 'Usuaria de NutriRuta').replace(/[<>]/g, '')}</div>
+            <p>"${esc(r.texto)}"</p>
+            <div class="who">${esc(r.nombre_mostrado || 'Usuaria de NutriRuta')}</div>
           </div>`).join('')}`;
     })
     .catch(() => { /* sin conexión: se queda el placeholder actual, no rompe la página */ });

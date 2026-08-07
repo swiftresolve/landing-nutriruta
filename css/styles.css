@@ -427,3 +427,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--sky); outline-o
 
 /* tabular numerals wherever prices/weeks line up */
 .price-amount, .tweek-n { font-variant-numeric: tabular-nums; }
+
+/* Nombre de la guía IA, "Su" + "Sana" en dos colores (coherente con la app). */
+.susana-name .su { color: var(--sky); }
+.susana-name .sana { color: var(--route-deep); }
