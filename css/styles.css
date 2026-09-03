@@ -28,8 +28,8 @@
      display: serif literaria y cálida (voz emocional)
      body:    sans humanista (lectura larga)
      signage: grotesca condensada tipo señal de carretera (el motivo "ruta") */
-  --font-display: "Yanone Kaffeesatz", -apple-system, "Segoe UI", "Helvetica Neue", Roboto, Arial, sans-serif;
-  --font-body: "Yanone Kaffeesatz", -apple-system, "Segoe UI", "Helvetica Neue", Roboto, Arial, sans-serif;
+  --font-display: "Karla", -apple-system, "Segoe UI", "Helvetica Neue", Roboto, Arial, sans-serif;
+  --font-body: "Karla", -apple-system, "Segoe UI", "Helvetica Neue", Roboto, Arial, sans-serif;
   --font-signage: "Bahnschrift", "Segoe UI Semibold", "Helvetica Neue Condensed", "Arial Narrow", sans-serif;
 
   --radius-lg: 20px;
