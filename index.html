@@ -51,7 +51,7 @@
     {
       "@type": "Question",
       "name": "Tengo hígado graso, resistencia a la insulina o colon irritable. ¿Sirve para mi caso?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Sí. En el quiz inicial cuentas tus condiciones conocidas y NutriRuta arma tu menú y tus recetas según los perfiles de salud correspondientes: hígado graso, resistencia a la insulina, prediabetes, colon irritable, migrañas, candidiasis y colesterol alto. Puedes activar varios perfiles a la vez." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí. En el quiz inicial cuentas tus condiciones conocidas y NutriRuta arma tu menú y tus recetas según los perfiles de salud correspondientes: hígado graso, resistencia a la insulina, prediabetes, colon irritable, gases e hinchazón, estreñimiento, migrañas, candidiasis, colesterol alto y temas hormonales como SOP. Puedes activar varios perfiles a la vez." }
     },
     {
       "@type": "Question",
@@ -102,7 +102,7 @@ fbq('track', 'PageView');
       <span class="brand-mark">
         <svg viewBox="0 0 512 512"><defs><linearGradient id="nrleaf" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#7CC96A"/><stop offset="1" stop-color="#3E9E52"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="#2BB5A0"/><g fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="13"><ellipse cx="256" cy="396" rx="148" ry="36"/><ellipse cx="256" cy="396" rx="86" ry="21"/></g><path d="M256 68 C168 68 100 136 100 222 C100 316 202 398 256 434 C310 398 412 316 412 222 C412 136 344 68 256 68 Z" fill="none" stroke="#FFFFFF" stroke-width="30" stroke-linejoin="round"/><g transform="translate(252 210) scale(0.55) translate(-256 -288)"><path d="M256 416c-72-48-136-102-136-176 0-45 34-80 78-80 28 0 48 13 58 32 10-19 30-32 58-32 44 0 78 35 78 80 0 74-64 128-136 176z" fill="#FFFFFF"/></g><g transform="translate(288 210) rotate(35)"><path d="M0 -40 C26 -24 28 10 0 40 C-28 10 -26 -24 0 -40 Z" fill="url(#nrleaf)"/><path d="M0 36 L-9 60" stroke="#3E9E52" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M0 -30 L0 32 M0 -16 L13 -25 M0 -16 L-13 -25 M0 2 L15 -7 M0 2 L-15 -7 M0 18 L12 9 M0 18 L-12 9" stroke="#FFFFFF" stroke-width="3.5" fill="none" stroke-linecap="round"/></g></svg>
       </span>
-      NutriRuta
+      <span class="brand-name">Nutri<span class="brand-ruta">Ruta</span></span>
     </a>
     <div class="nav-right">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro">
@@ -136,11 +136,18 @@ fbq('track', 'PageView');
 
       <div class="hero-art" aria-hidden="true">
         <svg viewBox="0 0 520 560" fill="none">
-          <path class="route-path" d="M40 40 C140 60, 60 180, 160 220 C260 260, 200 380, 320 420 C400 450, 380 520, 470 520" stroke-width="4"/>
+          <path id="heroRoutePath" class="route-path" d="M40 40 C140 60, 60 180, 160 220 C260 260, 200 380, 320 420 C400 450, 380 520, 470 520" stroke-width="4"/>
           <circle class="route-dot" cx="40" cy="40" r="7"/>
           <circle class="route-dot" cx="160" cy="220" r="6"/>
           <circle class="route-dot" cx="320" cy="420" r="6"/>
           <circle class="route-dot" cx="470" cy="520" r="8"/>
+          <!-- Viajero que recorre la ruta en bucle, como recordatorio
+               constante de que NutriRuta te acompaña paso a paso. -->
+          <circle class="route-traveler" r="6">
+            <animateMotion dur="7s" repeatCount="indefinite" begin="2.3s">
+              <mpath href="#heroRoutePath"/>
+            </animateMotion>
+          </circle>
         </svg>
         <div class="ruti-hero" title="Ruti">🌿</div>
         <div class="hero-card hero-card-1">
@@ -217,6 +224,7 @@ fbq('track', 'PageView');
       </div>
 
       <div class="steps reveal">
+        <div class="steps-traveler" aria-hidden="true"></div>
         <div class="step">
           <span class="step-num">1</span>
           <h3>Respondes tu quiz</h3>
@@ -291,9 +299,9 @@ fbq('track', 'PageView');
           <p>Un recordatorio a tiempo cuando toca un día nuevo del plan o cuando tu racha está en riesgo — sin saturarte.</p>
         </div>
         <div class="feature-card">
-          <div class="ruti-mini" aria-hidden="true">🌿</div>
+          <div class="ruti-mini" aria-hidden="true"><img src="./images/ruti-saludo.png" alt=""></div>
           <h3>Ruti crece contigo</h3>
-          <p>Tu racha de constancia tiene cara: Ruti pasa de semilla a brote, a hojas y a flor con cada día que sostienes tus hábitos — con escudos que protegen tu racha si fallas un solo día.</p>
+          <p>Cada día que sostienes tus hábitos suma a tus <strong>Días en Ruta</strong>, y tu Brote de Ruta crece contigo: de semilla a brote, a flor. Si un día se te complica, tus <strong>Pausas de Ruta</strong> cuidan la racha por ti.</p>
         </div>
       </div>
     </div>
@@ -370,8 +378,8 @@ fbq('track', 'PageView');
             <svg class="quote" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 4C6 4 3 7 3 11.5c0 3.5 2 6 5 6.5v2c-4-1-7-4.5-7-9C1 5.5 5 2 9.5 2v2zm11 0c-3.5 0-6.5 3-6.5 7.5 0 3.5 2 6 5 6.5v2c-4-1-7-4.5-7-9C12 5.5 16 2 20.5 2v2z"/></svg>
             <p class="founder-text">Sigo construyendo NutriRuta con lo que yo hubiera querido tener ese día: información verificada, un plan concreto y alguien que me acompañara, no solo un resultado de laboratorio.</p>
             <div class="founder-who">
-              <span class="founder-avatar">V</span>
-              <div><strong>Vicky</strong><span>Creadora de NutriRuta</span></div>
+              <span class="founder-avatar" aria-hidden="true">🌿</span>
+              <div><strong>Creadora de NutriRuta</strong></div>
             </div>
           </div>
           <div class="proof-space" id="resenasBox">Aquí van tus primeros testimonios reales, apenas los tengas — este espacio está listo para eso.</div>
@@ -492,7 +500,7 @@ fbq('track', 'PageView');
           <button class="faq-q" aria-expanded="false">Tengo hígado graso, resistencia a la insulina o colon irritable. ¿Sirve para mi caso?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>Sí. En el quiz inicial cuentas tus condiciones conocidas y NutriRuta arma tu menú y tus recetas según los perfiles de salud correspondientes: hígado graso, resistencia a la insulina, prediabetes, colon irritable, migrañas, candidiasis y colesterol alto. Puedes activar varios perfiles a la vez.</p></div>
+          <div class="faq-a"><p>Sí. En el quiz inicial cuentas tus condiciones conocidas y NutriRuta arma tu menú y tus recetas según los perfiles de salud correspondientes: hígado graso, resistencia a la insulina, prediabetes, colon irritable, gases e hinchazón, estreñimiento, migrañas, candidiasis, colesterol alto y temas hormonales como SOP. Puedes activar varios perfiles a la vez.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">¿Qué pasa si no como pescado, tengo alergias o soy vegetariana?

@@ -76,6 +76,11 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+/* Barritas de scroll invisibles en toda la página -- sigue siendo
+   scrolleable con el dedo/rueda, solo se oculta la barrita visual,
+   igual que en la app. */
+html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { display: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
@@ -137,6 +142,17 @@ section { padding: 88px 0; }
 .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; text-decoration: none; }
 .brand-mark { width: 32px; height: 32px; border-radius: 9px; background: var(--route); display: flex; align-items: center; justify-content: center; flex: none; }
 .brand-mark svg { width: 18px; height: 18px; }
+/* "Ruta" del nombre, literal: al pasar el mouse se subraya con un
+   trazo que se dibuja de izquierda a derecha, como el route-path del
+   hero -- el mismo gesto gráfico, aplicado al nombre de la marca. */
+.brand-ruta { position: relative; color: var(--route-deep); }
+.brand-ruta::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+  background: var(--ember); border-radius: 2px; transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+.brand:hover .brand-ruta::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) { .brand-ruta::after { transition: none; } }
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .nav .nav-cta { display: none; }
 @media (min-width: 720px) { .nav .nav-cta { display: inline-flex; } }
@@ -189,6 +205,10 @@ section { padding: 88px 0; }
 .hero h1 { margin-top: 14px; }
 .hero-sub { font-size: 1.15rem; color: var(--ink-soft); }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+/* Los dos botones del hero deben verse como un solo par parejo, no uno
+   más angosto que el otro solo porque su texto es más corto. */
+.hero-ctas .btn { min-width: 230px; }
+@media (max-width: 480px) { .hero-ctas .btn { min-width: 0; width: 100%; } }
 .hero-trust { margin-top: 14px; font-size: 0.86rem; color: var(--ink-soft); font-family: var(--font-signage); letter-spacing: 0.02em; }
 .hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
 .hero-trust span + span::before { content: "·"; margin-right: 6px; color: var(--line); }
@@ -251,13 +271,26 @@ section { padding: 88px 0; }
 @media (prefers-reduced-motion: reduce) { .ruti-hero { animation: none; } }
 @media (max-width: 720px) { .ruti-hero { width: 56px; height: 56px; font-size: 28px; } }
 
+/* Punto que recorre en bucle la misma ruta dibujada arriba -- la marca
+   se llama "Ruta": este viajero constante es el recordatorio visual
+   más literal de esa idea, sin ser un elemento nuevo y ajeno al resto
+   del hero (mismo trazo, mismo color coral que ya usan los otros
+   route-dot). */
+.route-traveler { fill: var(--ember); filter: drop-shadow(0 0 4px rgba(255,138,107,0.55)); }
+@media (prefers-reduced-motion: reduce) { .route-traveler { display: none; } }
+
 /* ---------- Reveal on scroll ---------- */
+/* Cada sección "llega" como cuando te acercas a un punto en un mapa:
+   arranca un poco más chica, algo desenfocada y más abajo, y termina
+   nítida en su lugar -- el mismo gesto de "zoom hacia el destino" que
+   Google Maps hace al buscar una dirección, aplicado a cada sección
+   de la página en vez de a un punto del mapa. */
 .reveal {
-  opacity: 0; transform: translateY(22px) scale(0.97);
-  transition: opacity 0.5s cubic-bezier(.34,1.56,.64,1), transform 0.5s cubic-bezier(.34,1.56,.64,1);
+  opacity: 0; transform: translateY(34px) scale(0.9); filter: blur(3px);
+  transition: opacity 0.65s cubic-bezier(.16,1,.3,1), transform 0.65s cubic-bezier(.16,1,.3,1), filter 0.5s ease-out;
 }
-.reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+.reveal.in { opacity: 1; transform: none; filter: blur(0); }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; filter: none; } }
 
 /* ---------- Problem section ---------- */
 .problem .wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
@@ -277,6 +310,27 @@ section { padding: 88px 0; }
 @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
 .step { position: relative; padding-top: 8px; }
+/* Los 4 pasos son, literalmente, la ruta -- una línea punteada los
+   conecta a la altura de los círculos numerados, con un punto que
+   recorre el camino una y otra vez. Solo en el layout de 4 columnas:
+   en mobile los pasos se apilan y la línea horizontal no aplica. */
+.steps::before {
+  content: ""; position: absolute; top: 25px; left: calc(12.5% + 17px); right: calc(12.5% + 17px);
+  height: 0; border-top: 2px dashed var(--route-tint);
+}
+.steps-traveler {
+  position: absolute; top: 21px; left: calc(12.5% + 17px); width: 8px; height: 8px; border-radius: 50%;
+  background: var(--ember); box-shadow: 0 0 5px rgba(255,138,107,0.6);
+  animation: steps-travel 6s ease-in-out infinite;
+}
+@keyframes steps-travel {
+  0% { left: calc(12.5% + 17px); opacity: 0; }
+  8% { opacity: 1; }
+  92% { left: calc(87.5% - 25px); opacity: 1; }
+  100% { left: calc(87.5% - 25px); opacity: 0; }
+}
+@media (max-width: 900px) { .steps::before, .steps-traveler { display: none; } }
+@media (prefers-reduced-motion: reduce) { .steps-traveler { animation: none; display: none; } }
 .step-num {
   font-family: var(--font-signage); font-weight: 700; font-size: 0.82rem; letter-spacing: 0.1em;
   color: var(--route-deep); background: var(--route-tint); display: inline-flex; align-items: center;
@@ -335,7 +389,7 @@ section { padding: 88px 0; }
 }
 .tweek-n { font-family: var(--font-signage); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--route); margin-bottom: 4px; }
 .tweek-t { font-size: 0.82rem; color: rgba(247, 250, 249, 0.85); line-height: 1.3; }
-.mission-cta { margin-top: 44px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.mission-cta { margin-top: 44px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
 .mission-cta p { color: var(--mission-ink-soft); font-size: 0.9rem; }
 
 /* ---------- Method / trust (replaces fabricated testimonials) ---------- */
@@ -354,7 +408,10 @@ section { padding: 88px 0; }
 .founder-card svg.quote { width: 30px; height: 30px; color: var(--route-tint); margin-bottom: 14px; }
 .founder-card p.founder-text { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.5; color: var(--ink); }
 .founder-who { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
-.founder-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--route-tint); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; color: var(--route-deep); flex: none; }
+.founder-avatar {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--route-tint);
+  font-size: 20px; text-align: center; line-height: 44px; flex: none;
+}
 .founder-who strong { display: block; font-size: 0.95rem; }
 .founder-who span { display: block; font-size: 0.82rem; color: var(--ink-soft); }
 .proof-space {
