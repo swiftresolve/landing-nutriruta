@@ -29,7 +29,7 @@
      body:    sans humanista (lectura larga)
      signage: grotesca condensada tipo señal de carretera (el motivo "ruta") */
   --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
-  --font-body: -apple-system, "Segoe UI", "Helvetica Neue", Roboto, Arial, sans-serif;
+  --font-body: "Karla", -apple-system, "Segoe UI", "Helvetica Neue", Roboto, Arial, sans-serif;
   --font-signage: "Bahnschrift", "Segoe UI Semibold", "Helvetica Neue Condensed", "Arial Narrow", sans-serif;
 
   --radius-lg: 20px;
